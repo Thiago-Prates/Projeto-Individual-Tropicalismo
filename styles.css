@@ -52,7 +52,7 @@ html {
 .menu {
     background-color: rgb(255, 255, 255);
     transition: background-color 0.5s ease, box-shadow 0.5s ease;
-    border-radius: 70px;
+    border-radius: 20px;
     margin-top: 1vh;
     position: fixed;
     /* Fixa no topo */
@@ -81,7 +81,7 @@ html {
     /* Sombra opcional */
     transition: background-color 0.5s ease, box-shadow 0.5s ease;
     margin-top: 1vh;
-    border-radius: 50px;
+    border-radius: 20px;
 
 }
 
@@ -301,7 +301,6 @@ html {
     padding: 70px; 
     max-width: 1200px;
     width: 100%;
-    border-radius: 30px;
     text-align: center;
     margin: 0 auto; 
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(240, 248, 255, 0.85));
