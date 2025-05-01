@@ -204,7 +204,7 @@ html {
 }
 
 
-.btn_entrar_contato {
+.btn_começar {
     border: none;
     border-radius: 24px;
     color: black;
@@ -215,14 +215,14 @@ html {
     transition: transform 1s;
 }
 
-.btn_entrar_contato:hover {
+.btn_começar:hover {
     background-color: white;
     border-color: lightblue;
     cursor: pointer;
     transform: scale(1.2);
 }
 
-.btn_entrar_contato:active {
+.btn_começar:active {
     background-color: white;
     
 
@@ -407,7 +407,7 @@ html {
 
 
 
-/* cards de beneficios */
+
 
 .conteudo-3 {
     background-image: linear-gradient(rgba(0, 0, 0, 0.651), rgba(0, 0, 0, 0.6)), url(https://images.unsplash.com/photo-1638311303831-a47fc5166edf?q=80&w=1933&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);    
@@ -496,7 +496,6 @@ html {
 
 
 
-/* seção das bolinhas */
 
 .conteudo-4 {
     padding: 60px 20px;
@@ -549,14 +548,13 @@ html {
 
 
 
-/* sobre nós  */
 #imgpontos {
     background-image: linear-gradient(rgba(0, 0, 0, 0.774), rgba(0, 0, 0, 0.753)), url('https://ogimg.infoglobo.com.br/in/21947862-2cb-c24/FT1086A/Reuniao-tropicalista.-No-alto-Caetano-Torquato-Neto-e-Rita-Lee-no-meio-Tom-Ze-Glauber-Rocha-Rogerio-Duprat-e-Gil-abaixo-Helio-Oiticica-Jose-Celso-Martinez-Correa-e-GaTropicalia.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     width: 100%;
-    height: 100vh; /* 100% da altura da tela */
+    height: 100vh; 
     display: flex;
     flex-direction: column;
     justify-content: center;
