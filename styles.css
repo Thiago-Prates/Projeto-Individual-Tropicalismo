@@ -529,13 +529,12 @@ html {
 }
 
 .iframe-container iframe {
-    width: 300px;
-    height: 152px;
+    width: 350px;
+    height: 200px;
     margin-top: 16vh;
     border-radius: 12px;
     background-color: white;
     padding: 5px;
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
 }
 
 
