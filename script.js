@@ -29,29 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
 });
 
-window.onload = function () {
-    let currentIndex = 0;
-    const items = document.querySelectorAll('.carousel-item');
-
-    function showItem(index) {
-        items.forEach((item, i) => {
-            item.classList.toggle('active', i === index);
-        });
-    }
-
-    function moveCarousel(direction) {
-        currentIndex += direction;
-        if (currentIndex < 0) currentIndex = items.length - 1;
-        if (currentIndex >= items.length) currentIndex = 0;
-        showItem(currentIndex);
-    }
-
-    showItem(currentIndex);
-
-    // Torna a função disponível globalmente para os botões onclick
-    window.moveCarousel = moveCarousel;
-};
-
 
 
 
