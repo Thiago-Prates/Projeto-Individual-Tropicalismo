@@ -53,6 +53,7 @@ html {
     background-color: rgb(255, 255, 255);
     transition: background-color 0.5s ease, box-shadow 0.5s ease;
     border-radius: 20px;
+    display: flex;
     margin-top: 1vh;
     position: fixed;
     /* Fixa no topo */
@@ -67,11 +68,12 @@ html {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     z-index: 1000;
     /* Garante que fique acima de outros elementos */
-    display: flex;
     justify-content: space-between;
     box-shadow: none;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
+    margin-right: 30px;
+
 }
 
 .menu.scrolled {
@@ -91,6 +93,9 @@ html {
     background-color: rgba(240, 248, 255, 0);
     border: none;
     font-size: medium;
+    display: flex;
+    left: 10px;
+
 }
 
 .btn_menu {
@@ -100,6 +105,7 @@ html {
     text-decoration: none;
     padding: 8px 16px;
     animation: partying ease-in forwards;
+    
 }
 
 .menu img {
@@ -134,24 +140,25 @@ html {
 
 .btn_login {
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
     color: aliceblue;
     background-color: rgb(4, 163, 163);
-    width: 110px;
+    width: 100px;
     display: flex;
     margin-top: 1vh;
     justify-content: center;
     align-items: center;
     height: 40px;
     font-size: large;
-    margin-right: 30px;
-    display: flex;
+    margin-right: 50px;
 
 }
 
 .btn_login a {
-    text-decoration: none;
+    text-decoration: wavy;
     color: white;
+    display: flex;
+    text-align: center;
 }
 
 .btn_login:hover {
@@ -159,6 +166,7 @@ html {
     border-color: lightblue;
     cursor: pointer;
     transform: scale(1.1);
+    
 }
 
 .btn_login:active {
