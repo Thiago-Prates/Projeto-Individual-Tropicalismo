@@ -1,0 +1,207 @@
+body {
+    margin-top: 9%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.651), rgba(0, 0, 0, 0.6)), url(https://i.pinimg.com/736x/0f/a1/ba/0fa1ba9a446fbfe538152b012d40d708.jpg);   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'poppins';
+    font-weight: 600;
+    font-style: normal;
+    flex-direction: column;
+}
+
+.pai {
+    width: 70%;
+    height: 70vh;
+    border-radius: 10px;
+    flex-direction: row;
+    display: flex;
+}
+
+
+.paiCadastro2 {
+    width: 70%;
+    height: 100%;
+    border-radius: 10px;
+    flex-direction: row;
+    display: flex;
+}
+
+
+.imagem {
+    width: 70vh;
+    height: 70vh;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    flex-direction: row;
+    display: flex;
+    background: rgb(29, 28, 28);
+
+}
+
+.imagem img {
+    width: 70%;
+    height: 80%;
+   
+    margin-left: 10vh;
+    margin-top: 6vh;
+}
+
+.imagemCadastro {
+    width: 50%;
+
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    flex-direction: row;
+    display: flex;
+    background-color: rgb(0, 0, 0);
+    box-shadow: 0px 1px 63px -17px rgba(0, 0, 0, 0.77);
+
+}
+
+.imagemCadastro img {
+    width: 90%;
+    height: 100%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-left: 3vh;
+    margin-top: 5vh;
+}
+
+.form {
+    width: 50%;
+    background-color: rgb(255, 255, 255);
+    height: 100%;
+    backdrop-filter: blur(100px);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: rgb(0, 0, 0);
+    justify-content: space-evenly;
+}
+
+.formCadastro {
+    width: 50%;
+    background-color: rgb(255, 255, 255);
+    backdrop-filter: blur(100px);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: rgb(0, 0, 0);
+    justify-content: space-between;
+    
+}
+
+.inputs {
+    flex-direction: column;
+    display: flex;
+    width: 60%;
+    justify-content: space-evenly;
+    display: flex;
+    margin-bottom: 1vh;
+}
+
+.inputsCadastro {
+    flex-direction: column;
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    padding-left: 5px;
+}
+
+
+.geral {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-evenly;
+}
+
+input {
+    border-radius: 8px;
+    height: 40px;
+    border: 1.5px solid rgba(0, 0, 0, 0.3);
+    outline: none;
+    background-color: transparent;
+    padding: 0 15px; 
+    font-size: 0.95em;
+    margin-bottom: 15px; 
+    font-family: 'Poppins', sans-serif; 
+    font-weight: 400;
+    color: #333; 
+    width: 100%; /* Faz o input preencher seu container */
+    box-sizing: border-box; /* Inclui padding e borda na largura total */
+}
+
+.text {
+    align-self: flex-start;
+    margin-left: 7vh;
+    margin-top: 3vh;
+}
+
+.text2 {
+    align-self: flex-start;
+    margin-left: 7vh;
+    margin-top: 3vh;
+}
+
+p {
+    color: rgb(0, 0, 0);
+}
+
+.botao {
+    align-self: flex-start;
+    align-self: center;
+    width: 60%;
+}
+
+.botaoCadastro {
+    align-self: center;
+    width: 56%;
+    margin-top: 3vh;
+
+}
+
+button:hover {
+    background-color:  rgb(0, 0, 0);
+}
+
+
+button {
+    height: 40px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 600;
+    background-color:  rgb(104, 104, 104);
+    color: aliceblue;
+    font-size: large;
+}
+
+.cadastrolink {
+    justify-content: center;
+    text-align: center;
+
+}
+
+.cadastrolink a {
+    text-decoration: none;
+    color: rgb(104, 104, 104);
+}
+
+.botaopage {
+    align-self: center;
+    margin-top: 6vh;
+    margin-bottom: 10vh;
+}
+
+.botaopage a {
+   text-decoration: none;
+   color: rgb(104, 104, 104);
+}
