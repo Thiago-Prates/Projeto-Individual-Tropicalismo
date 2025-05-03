@@ -29,11 +29,3 @@ document.addEventListener('DOMContentLoaded', () => {
     
 });
 
-
-
-
-
-
-
-
-

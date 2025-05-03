@@ -92,7 +92,6 @@ html {
     border: none;
     font-size: medium;
     display: flex;
-    left: 10px;
 
 }
 
@@ -573,6 +572,7 @@ html {
     overflow: hidden;
     width: 55vw;
     display: flex;
+    justify-content: center;
     justify-self: center;
     white-space: nowrap;
     margin-top: 10vh;

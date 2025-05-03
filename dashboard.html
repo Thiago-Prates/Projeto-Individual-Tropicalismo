@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" href="assets/image/logoMD.jpg" type="image/png">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=dashboard" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <title>Votação dos artistas/bandas favoritas</title>
+</head>
+
+<nav class="menu">
+  <ul class="menu-itens">
+    <a href="index.html" class="btn_menu"><span style="color: rgb(36, 233, 102);">Página inicial</span></a>
+    <a href="#contexto" class="btn_menu"> <span style="color: #f5c321;"> Quantidade de votos </span></a>
+    <a href="#compositores" class="btn_menu"> <span style="color: rgb(4, 163, 163);"> #Veias Do Brasil </span></a>
+  </ul>
+</nav>
+
+
+  <div class="geral">
+    <div class="titulo">
+      <h1> Quantidade de  votos de cada artista/banda </h1>
+    </div>
+  
+
+    <!-- indicadores  -->
+    <div class="kpis">
+      <div class="indicador" style="background-color: rgb(36, 233, 102);">
+        <h3>Número de <br> votos totais</h3>
+        <h1>XXX</h1>
+      </div>
+      <div class="indicador" style="background-color: #f5c321;">
+        <h3>Artista/Banda <br> mais votada</h3>
+        <h1>XXX</h1>
+      </div>
+      <div class="indicador" style="background-color: rgb(4, 163, 163)">
+        <h3>Artista/Banda <br> menos votada</h3>
+        <h1>XXX</h1>
+      </div>
+      <div class="indicador" style="background-color: rgb(36, 233, 102);">
+        <h3>Diferença entre os<br>dois primeiros</h3>
+        <h1>XXX</h1>
+      </div>
+    </div>
+
+    
+
+    <div class="graficos">
+
+      <div class="graficoBar">
+      <!--  <h2>Quantidade de votos</h2> -->
+        <div>
+            <canvas id="myChart" width="500" height="300"></canvas>
+        </div>
+      </div>
+
+      <div class="graficoPizza">
+       <!-- <h2>Quantidade de votos</h2>-->
+        <div>
+            <canvas id="myChart2" width="300" height="300"></canvas>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['artista1', 'artista2', 'artista3', 'artista4', 'artista5', 'artista6', 'artista7', 'artista8'],
+      datasets: [{
+        label: 'Votos',
+        data: [50, 68, 38, 52, 45, 39, 53, 60],
+        backgroundColor: '#5e5e5e',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  const ctx2 = document.getElementById('myChart2');
+
+  new Chart(ctx2, {
+    type: 'pie',
+    data: {
+      labels: ['artista1', 'artista2', 'artista3', 'artista4', 'artista5', 'artista6', 'artista7', 'artista8'],
+      datasets: [{
+        label: 'Votos',
+        data: [50, 68, 38, 52, 45, 39, 53, 60],
+        backgroundColor: '#5e5e5e',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
