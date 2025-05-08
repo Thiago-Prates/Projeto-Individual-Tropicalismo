@@ -60,3 +60,46 @@ insert into empresa (razao_social, codigo_ativacao) values ('Empresa 1', 'ED145B
 insert into empresa (razao_social, codigo_ativacao) values ('Empresa 2', 'A1B2C3');
 insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
 insert into aquario (descricao, fk_empresa) values ('Aquário de Peixe-dourado', 2);
+
+
+
+-- O MEU
+
+use testeAPI;
+
+show tables;
+select *from votos;
+select *from usuario;
+select *from artistas;
+
+describe usuario;
+describe artistas;
+describe votos;
+
+create table usuario (
+id int primary key auto_increment,
+nome varchar(45), email varchar(45), senha varchar(45));
+
+create table artistas (
+idartista int primary key auto_increment,
+nome varchar(45));
+
+create table votos (
+idvoto INT,
+fkusuario INT, 
+fkartista INT,
+data_voto datetime default current_timestamp);
+
+
+select *from votos;
+select *from usuario;
+select *from artistas;
+
+
+insert into artistas (nome) values (
+('Caetano Veloso'),
+('Gilberto Gil'),
+('Gal Costa'),
+('Os Mutantes'),
+('Torquato Neto'),
+('Nara Leão'));
