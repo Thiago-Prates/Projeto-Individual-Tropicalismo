@@ -17,20 +17,20 @@
   <title>Votação dos artistas/bandas favoritas</title>
 </head>
 
-<nav class="menu">
-  <ul class="menu-itens">
-    <a href="index.html" class="btn_menu"><span style="color: rgb(36, 233, 102);">Página inicial</span></a>
-    <a href="#contexto" class="btn_menu"> <span style="color: #f5c321;"> Quantidade de votos </span></a>
-    <a href="#compositores" class="btn_menu"> <span style="color: rgb(4, 163, 163);"> #Veias Do Brasil </span></a>
-  </ul>
-</nav>
+<body>
 
+  <nav class="menu">
+    <ul class="menu-itens">
+      <a href="index.html" class="btn_menu"><span style="color: rgb(36, 233, 102);">Página inicial</span></a>
+      <a href="#contexto" class="btn_menu"> <span style="color: #f5c321;"> Quantidade de votos </span></a>
+      <a href="#compositores" class="btn_menu"> <span style="color: rgb(4, 163, 163);"> #Veias Do Brasil </span></a>
+    </ul>
+  </nav>
 
   <div class="geral">
     <div class="titulo">
       <h1> Quantidade de votos de cada artista/banda </h1>
     </div>
-  
 
     <!-- indicadores  -->
     <div class="kpis">
@@ -38,7 +38,7 @@
         <h3>Número de <br> votos totais</h3>
         <h1>XXX</h1>
       </div>
-      <div class="indicador" style="background-color:  rgb(36, 233, 102);">
+      <div class="indicador" style="background-color: rgb(36, 233, 102);">
         <h3>Artista/Banda <br> mais votada</h3>
         <h1>XXX</h1>
       </div>
@@ -46,77 +46,187 @@
         <h3>Artista/Banda <br> menos votada</h3>
         <h1>XXX</h1>
       </div>
-      <div class="indicador" style="background-color:  #f5c321;">
+      <div class="indicador" style="background-color: #f5c321;">
         <h3>Diferença entre os<br>dois primeiros</h3>
         <h1>XXX</h1>
       </div>
     </div>
-    
 
     <div class="graficos">
+    <div>
+      <canvas id="canvas_grafico"></canvas>
+    </div>
 
-      <div class="graficoBar">
-      <!--  <h2>Quantidade de votos</h2> -->
-        <div>
-            <canvas id="myChart" width="500" height="300"></canvas>
-        </div>
-      </div>
 
-      <div class="graficoPizza">
-       <!-- <h2>Quantidade de votos</h2>-->
-        <div>
-            <canvas id="myChart2" width="300" height="300"></canvas>
-        </div>
-      </div>
-
+    <div>
+      <canvas id="canvas_grafico_pizza"></canvas>
     </div>
   </div>
+
+
+
+  </div> 
+  <script>
+      let proximaAtualizacao;
+
+      window.onload = () => {obterDadosGrafico(1), obterDadosGrafico(2);}
+
+      function obterDadosGrafico(fkartista) {
+          
+
+          fetch(`/medidas/ultimas/${fkartista}`, { cache: 'no-store' }).then(function (response) {
+              if (response.ok) {
+                  response.json().then(function (resposta) {
+                      console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                      resposta.reverse();
+
+                      plotarGraficoBarras(resposta, fkartista);
+                      plotarGraficoPizza(resposta, fkartista);
+                  });
+              } else {
+                  console.error('Nenhum dado encontrado ou erro na API');
+              }
+          })
+              .catch(function (error) {
+                  console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+              });
+      }
+
+
+
+
+      function plotarGraficoBarras(resposta, fkartista) {
+          console.log('iniciando plotagem do gráfico...');
+
+          var dados = {
+              labels: [],
+              datasets: [
+                  {
+                      label: 'Votos',
+                      borderColor: '#32B9CD',
+                      backgroundColor: ['green', 'red', 'orange', 'blue', 'lightBlue', 'purple'],
+                      data: []
+                  }
+              ]
+          };
+
+          
+
+          for (i = resposta.length - 1; i >= 0; i--) {
+              var registro = resposta[i];
+              dados.labels.push(registro.nome);
+              dados.datasets[0].data.push(registro['count(fkartista)']);  
+          }
+
+          console.log(JSON.stringify(dados));
+
+          var canvas = document.getElementById('canvas_grafico');
+          var ctx = canvas.getContext('2d');
+
+
+          window.grafico_linha = new Chart(ctx, {
+              type: 'bar',
+              data: dados,
+              options: {
+                  animation: { duration: 500 },
+                  plugins: {
+                      title: {
+                          display: true,
+                          text: 'Quantidade de votos'
+                      }
+                  },
+                  scales: {
+                      y: {
+                          beginAtZero: true,
+                          min: 0
+                      }
+                  }
+              }
+          });
+              window.onload = () => { obterDadosGrafico(1); }
+
+      }
+
+
+
+
+
+      function plotarGraficoPizza(resposta, fkartista) {
+          console.log('iniciando plotagem do gráfico...');
+
+          var dados = {
+              labels: [],
+              datasets: [
+                  {
+                      label: 'Votos',
+                      borderColor: '#32B9CD',
+                      backgroundColor: ['green', 'red', 'orange', 'blue', 'lightBlue', 'purple'],
+                      data: []
+                  }
+              ]
+          };
+
+
+          for (i = resposta.length - 1; i >= 0; i--) {
+              var registro = resposta[i];
+              dados.labels.push(registro.nome);
+              dados.datasets[0].data.push(registro['count(fkartista)']);  
+          }
+
+          console.log(JSON.stringify(dados));
+
+          var canvas = document.getElementById('canvas_grafico_pizza');
+          var ctx = canvas.getContext('2d');
+
+
+          window.grafico_linha = new Chart(ctx, {
+              type: 'pie',
+              data: dados,
+              options: {
+                  animation: { duration: 500 },
+                  plugins: {
+                      title: {
+                          display: true,
+                          text: 'Quantidade de votos'
+                      }
+                  },
+                  scales: {
+                      y: {
+                          beginAtZero: true,
+                          min: 0
+                      }
+                  }
+              }
+          });
+              window.onload = () => { obterDadosGrafico(2); }
+
+      }
+
+
+
+
+      // Função de atualização de gráfico (se necessário)
+      function atualizarGrafico(fkartista, dados) {
+          fetch(`/medidas/tempo-real/${fkartista}`, { cache: 'no-store' }).then(function (response) {
+              if (response.ok) {
+                  response.json().then(function (novoRegistro) {
+                      console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                      console.log(`Dados atuais do gráfico: ${dados}`);
+
+                      window.grafico_linha.update();
+
+                      proximaAtualizacao = setTimeout(() => atualizarGrafico(fkartista, dados), 2000);
+                  });
+              } else {
+                  console.error('Nenhum dado encontrado ou erro na API');
+                  proximaAtualizacao = setTimeout(() => atualizarGrafico(fkartista, dados), 2000);
+              }
+          })
+              .catch(function (error) {
+                  console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+              });
+      }
+  </script>
 </body>
 
 </html>
-
-<script>
-  const ctx = document.getElementById('myChart');
-
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['artista1', 'artista2', 'artista3', 'artista4', 'artista5', 'artista6', 'artista7', 'artista8'],
-      datasets: [{
-        label: 'Votos',
-        data: [50, 68, 38, 52, 45, 39, 53, 60],
-        backgroundColor: '#04A3A3',
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-
-  const ctx2 = document.getElementById('myChart2');
-
-  new Chart(ctx2, {
-    type: 'pie',
-    data: {
-      labels: ['artista1', 'artista2', 'artista3', 'artista4', 'artista5', 'artista6', 'artista7', 'artista8'],
-      datasets: [{
-        label: 'Votos',
-        data: [50, 68, 38, 52, 45, 39, 53, 60],
-        backgroundColor: '#04A3A3',
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-</script>
