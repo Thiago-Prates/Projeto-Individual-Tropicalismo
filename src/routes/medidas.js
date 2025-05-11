@@ -12,3 +12,4 @@ router.get("/tempo-real/:idvoto", function (req, res) {
 })
 
 module.exports = router;
+
