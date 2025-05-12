@@ -32,23 +32,24 @@
       <h1> Quantidade de votos de cada artista/banda </h1>
     </div>
 
+
     <!-- indicadores  -->
     <div class="kpis">
       <div class="indicador" style="background-color: rgb(36, 233, 102);">
-        <h3>Número de <br> votos totais</h3>
-        <h1>XXX</h1>
-      </div>
+        <h3>Número de <br> votos totais:</h3>
+        <h1 class="indicador-valor"></h1>      
+    </div>
       <div class="indicador" style="background-color: rgb(36, 233, 102);">
-        <h3>Artista/Banda <br> mais votada</h3>
-        <h1>XXX</h1>
+        <h3>Artista/Banda <br> mais votada:</h3>
+        <h1 class="indicador-valor"></h1>
       </div>
       <div class="indicador" style="background-color: #f5c321;">
-        <h3>Artista/Banda <br> menos votada</h3>
-        <h1>XXX</h1>
+        <h3>Artista/Banda <br> menos votada:</h3>
+        <h1 class="indicador-valor"></h1>
       </div>
       <div class="indicador" style="background-color: #f5c321;">
-        <h3>Diferença entre os<br>dois primeiros</h3>
-        <h1>XXX</h1>
+        <h3>Diferença entre o<br>primeiro e último:</h3>
+        <h1 class="indicador-valor"></h1>
       </div>
     </div>
 
@@ -69,7 +70,7 @@
   <script>
       let proximaAtualizacao;
 
-      window.onload = () => {obterDadosGrafico(1), obterDadosGrafico(2);}
+      window.onload = () => {obterDadosGrafico(1), obterDadosGrafico(2), buscarMedidasEmIndicadores();}
 
       function obterDadosGrafico(fkartista) {
           
@@ -95,7 +96,7 @@
 
 
 
-      function plotarGraficoBarras(resposta, fkartista) {
+      function plotarGraficoBarras(resposta) {
           console.log('iniciando plotagem do gráfico...');
 
           var dados = {
@@ -104,7 +105,7 @@
                   {
                       label: 'Votos',
                       borderColor: '#32B9CD',
-                      backgroundColor: ['green', 'red', 'orange', 'blue', 'lightBlue', 'purple'],
+                      backgroundColor: ['Teal', 'Blue', 'Gray', 'Maroon	', 'lightBlue', 'purple'],
                       data: []
                   }
               ]
@@ -143,7 +144,6 @@
                   }
               }
           });
-              window.onload = () => { obterDadosGrafico(1); }
 
       }
 
@@ -151,7 +151,7 @@
 
 
 
-      function plotarGraficoPizza(resposta, fkartista) {
+      function plotarGraficoPizza(resposta) {
           console.log('iniciando plotagem do gráfico...');
 
           var dados = {
@@ -160,7 +160,7 @@
                   {
                       label: 'Votos',
                       borderColor: '#32B9CD',
-                      backgroundColor: ['green', 'red', 'orange', 'blue', 'lightBlue', 'purple'],
+                      backgroundColor: ['Teal', 'Blue', 'Gray', 'Maroon	', 'lightBlue', 'purple'],
                       data: []
                   }
               ]
@@ -198,14 +198,12 @@
                   }
               }
           });
-              window.onload = () => { obterDadosGrafico(2); }
 
       }
 
 
 
 
-      // Função de atualização de gráfico (se necessário)
       function atualizarGrafico(fkartista, dados) {
           fetch(`/medidas/tempo-real/${fkartista}`, { cache: 'no-store' }).then(function (response) {
               if (response.ok) {
@@ -215,17 +213,40 @@
 
                       window.grafico_linha.update();
 
-                      proximaAtualizacao = setTimeout(() => atualizarGrafico(fkartista, dados), 2000);
+                      proximaAtualizacao = setTimeout(() => atualizarGrafico(dados), 2000);
                   });
               } else {
                   console.error('Nenhum dado encontrado ou erro na API');
-                  proximaAtualizacao = setTimeout(() => atualizarGrafico(fkartista, dados), 2000);
+                  proximaAtualizacao = setTimeout(() => atualizarGrafico(dados), 2000);
               }
           })
               .catch(function (error) {
                   console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
               });
       }
+
+
+
+
+    function buscarMedidasEmIndicadores() {
+    fetch("/medidas/indicadores", { cache: "no-store" })
+        .then(res => {
+            if (res.ok) return res.json();
+        })
+        .then(dados => {
+            const info = dados[0];
+            const indicadores = document.getElementsByClassName("indicador-valor"); 
+    indicadores[0].innerText = info.totalVotos;
+    indicadores[1].innerText = info.maisVotado;
+    indicadores[2].innerText = info.menosVotado;
+    indicadores[3].innerText = info.diferencavotos;
+        })
+        .catch(erro => {
+            console.error("Erro ao carregar os indicadores:", erro);
+        });
+}
+
+      
   </script>
 </body>
 

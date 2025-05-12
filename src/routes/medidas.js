@@ -11,5 +11,9 @@ router.get("/tempo-real/:idvoto", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })
 
+router.get("/indicadores", function (req, res) {
+    medidaController.buscarMedidasEmIndicadores(req, res);
+})
+
 module.exports = router;
 
