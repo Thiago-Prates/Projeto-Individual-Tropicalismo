@@ -88,7 +88,10 @@ create table votos (
 idvoto INT,
 fkusuario INT, 
 fkartista INT,
-data_voto datetime default current_timestamp);
+data_voto datetime default current_timestamp,
+primary key (idvoto, fkusuario, fkartista),
+constraint fkusuariovotos foreign key (fkusuario) REFERENCES usuario,
+constraint fkartistavotos foreign key (fkartista) REFERENCES artistas);
 
 
 select *from votos;
