@@ -23,37 +23,81 @@
     <ul class="menu-itens">
       <a href="index.html" class="btn_menu"><span style="color: rgb(36, 233, 102);">Página inicial</span></a>
       <a href="dashboard.html" class="btn_menu"> <span style="color: #f5c321;"> Quantidade de votos </span></a>
-      <a href="VeiasDoBrasil.html" class="btn_menu"> <span style="color: rgb(4, 163, 163);"> #Veias Do Brasil </span></a>
+      <a href="VeiasDoBrasil.html" class="btn_menu"> <span style="color: rgb(4, 163, 163);"> #Veias Do Brasil
+        </span></a>
     </ul>
   </nav>
 
   <div class="geral">
     <div class="titulo">
-      <h1> <span style="color: rgb(36, 233, 102);"> #VeiasDoBrasil </span> <br> <span style="color: #f5c321;"> mande seu vídeo e seu relato, </span> <br> <span style="color: rgb(4, 163, 163);"> faça parte da nossa história!!! </span></h1>
+      <h1> <span style="color: rgb(36, 233, 102);"> #VeiasDoBrasil </span> <br> <span style="color: #f5c321;"> mande seu
+          vídeo e seu relato, </span> <br> <span style="color: rgb(4, 163, 163);"> faça parte da nossa história!!!
+        </span></h1>
     </div>
 
 
     <div class="kpis">
 
-        <div class="video">
-        <video src="logo/VideoTocando.mp4" 
-        controls
-        > 
-            
-        </video> 
-  </div> 
+      <div class="video">
+        <video src="logo/VideoTocando.mp4" controls>
+
+        </video>
+      </div>
       <div class="indicador" style="background-color: rgb(47, 54, 49);">
         <h3>História contada <br> por: <i>Thiago Prates </i></h3>
-        <h1 class="indicador-valor">Mesmo antes do meu nascimento, minha família sempre foi muito ligada à música. Minha mãe tocava piano desde a adolescência, meu pai, saxofone, e meu irmão, diversos instrumentos. Então, desde que me entendo por gente, sempre fui muito ligado à música em geral, sendo meu gênero preferido a MPB. Quando completei meus dez anos de vida, iniciei minha trajetória para aprender a tocar as músicas que gostava tanto, resultando em uma paixão que mantenho até hoje!</h1> 
+        <h1 class="indicador-valor">Mesmo antes do meu nascimento, minha família sempre foi muito ligada à música. Minha
+          mãe tocava piano desde a adolescência, meu pai, saxofone, e meu irmão, diversos instrumentos. Então, desde que
+          me entendo por gente, sempre fui muito ligado à música em geral, sendo meu gênero preferido a MPB. Quando
+          completei meus dez anos de vida, iniciei minha trajetória para aprender a tocar as músicas que gostava tanto,
+          resultando em uma paixão que mantenho até hoje!</h1>
 
-          <button class="btn-relato">Enviar seu relato</button>
-     
+        <button class="btn-relato">Enviar seu relato</button>
+
       </div>
       
+      <div id="Relato" class="Relatos-container">
+        <div class="Relatos-cont">
+          <span class="fecharbtn" onclick="fechar()">&times;</span>
+          <h2>Envie seu relato</h2>
+          <p class="indicador-valor">Seu relato poderá aparecer no mural semanal, então fique atento no mural 👀</p>
+          <textarea id="relatoTexto" placeholder="Escreva aqui seu relato..."></textarea>
+          <input type="file" id="uploadVideo" accept="video/*,image/*">
+          <br><br>
+          <button onclick="enviarRelato()">Enviar</button>
+        </div>
+      </div>
 
     </div>
+  </div>
+</body>
 
 
 
 
-  </div> 
+
+
+<script>
+  const btnRelato = document.querySelector(".btn-relato");
+  const Relato = document.getElementById("Relato");
+
+  btnRelato.addEventListener("click", () => {
+    Relato.style.display = "flex";
+  });
+
+  function fechar() {
+    Relato.style.display = "none";
+  }
+
+  function enviarRelato() {
+    const texto = document.getElementById("relatoTexto").value
+    const video = document.getElementById("uploadVideo").files[0]
+
+    if (!texto || !video) {
+      alert("Preencha o relato e selecione um arquivo.")
+      return
+    }
+
+    alert("Relato enviado com sucesso!")
+    fechar()
+  }
+</script>

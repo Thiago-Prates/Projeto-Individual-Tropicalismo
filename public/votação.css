@@ -1,7 +1,7 @@
 body {
   
-    font-family: sans-serif;
-    display: flex;
+    font-family: "Poppins", sans-serif;
+      display: flex;
     justify-content: center;
     align-items: center;
     background-image: linear-gradient(rgba(0, 0, 0, 0.733), rgba(0, 0, 0, 0.726)), url(logo/download\ \(1\).jpg);
@@ -69,7 +69,6 @@ body {
   .titulo {
     font-size: large;
     margin-top: 90px;
-    font-family: Poppins;
     color: rgb(0, 0, 0);
     
   }
