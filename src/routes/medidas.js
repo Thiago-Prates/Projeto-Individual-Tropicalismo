@@ -15,5 +15,9 @@ router.get("/indicadores", function (req, res) {
     medidaController.buscarMedidasEmIndicadores(req, res);
 })
 
+router.get("/coments", function (req, res) {
+    medidaController.buscarMedidasEmcoments(req, res);
+})
+
 module.exports = router;
 

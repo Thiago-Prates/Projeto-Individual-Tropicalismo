@@ -42,6 +42,11 @@
         <video src="logo/VideoTocando.mp4" controls>
 
         </video>
+        <div class="ComentarioContainer">
+          <textarea id="comentar" placeholder="Deixe seu comentário..."></textarea>
+          <button class="btn-comentario" onclick="coment()">Enviar</button>
+        </div>
+
       </div>
       <div class="indicador" style="background-color: rgb(47, 54, 49);">
         <h3>História contada <br> por: <i>Thiago Prates </i></h3>
@@ -54,7 +59,7 @@
         <button class="btn-relato">Enviar seu relato</button>
 
       </div>
-      
+
       <div id="Relato" class="Relatos-container">
         <div class="Relatos-cont">
           <span class="fecharbtn" onclick="fechar()">&times;</span>
@@ -67,6 +72,14 @@
         </div>
       </div>
 
+    </div>
+
+    <div class="comentar" style="background-color: #000000;">
+      <h3>Últimos comentários:</h3>
+      <div class="comentar-pessoa"></div>
+      <p class="comentar-valor"> </p>
+
+      
     </div>
   </div>
 </body>
@@ -100,4 +113,96 @@
     alert("Relato enviado com sucesso!")
     fechar()
   }
+
+
+
+
+  function coment() {
+
+    const textoComentario = document.querySelector('.ComentarioContainer textarea').value;
+
+    if (textoComentario == ``) {
+      alert("Por favor, escreva um comentário antes de enviar.");
+      return;
+    }
+
+    var fkusuarioVar = sessionStorage.getItem("ID_USUARIO");
+
+    console.log("Usuário votando: ", fkusuarioVar);
+
+    var descricaoVar = textoComentario;
+
+
+    fetch("/usuarios/coment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+
+
+        fkusuarioServer: fkusuarioVar,
+        descricaoServer: descricaoVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+          alert
+            ("Comentario enviado com sucesso");
+
+          buscarMedidasEmcoments();
+
+
+        } else {
+          alert("Houve um erro ao comentar!");
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+    document.querySelector('.ComentarioContainer textarea').value = ``
+
+    return false;
+
+  }
+
+
+
+
+  function buscarMedidasEmcoments() {
+      
+        
+    fetch("/medidas/coments", { cache: "no-store" })
+      .then(res => {
+        if (res.ok) return res.json();
+      })
+      .then(dados => {
+        const container = document.querySelector(".comentar-pessoa");
+        container.innerHTML = ``
+        for (var index = 0; index < dados.length; index++) {
+          
+          
+        
+        const info = dados[index];
+        const data = new Date(info.dataPublicacao);
+        const dataFormatada = data.toLocaleString("pt-BR", {
+          day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit"
+        });
+        container.innerHTML += `
+          <div style="margin-bottom: 12px; color: white;">
+            <strong>${info.nomeUsuario}</strong> <small style="color: gray;">(${dataFormatada})</small><br>
+            ${info.comentario}
+          </div>`;
+        }
+      })
+      .catch(erro => {
+        console.error("Erro ao carregar os comentarios:", erro);
+      });
+  }
+  buscarMedidasEmcoments();
+
 </script>

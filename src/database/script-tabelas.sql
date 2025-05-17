@@ -1,80 +1,4 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
-
-/*
-comandos para mysql server
-*/
-
-CREATE DATABASE aquatech;
-
-USE aquatech;
-
-CREATE TABLE empresa (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	razao_social VARCHAR(50),
-	cnpj CHAR(14),
-	codigo_ativacao VARCHAR(50)
-);
-
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
-);
-
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
-);
-
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
-);
-
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
-
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
-);
-
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 1', 'ED145B');
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 2', 'A1B2C3');
-insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
-insert into aquario (descricao, fk_empresa) values ('Aquário de Peixe-dourado', 2);
-
-
-
--- O MEU
-
 use testeAPI;
-
-show tables;
-select *from votos;
-select *from usuario;
-select *from artistas;
-
-describe usuario;
-describe artistas;
-describe votos;
 
 create table usuario (
 id int primary key auto_increment,
@@ -88,15 +12,15 @@ create table votos (
 idvoto INT,
 fkusuario INT, 
 fkartista INT,
-data_voto datetime default current_timestamp,
-primary key (idvoto, fkusuario, fkartista),
-constraint fkusuariovotos foreign key (fkusuario) REFERENCES usuario,
-constraint fkartistavotos foreign key (fkartista) REFERENCES artistas);
+data_voto datetime default current_timestamp);
 
-
-select *from votos;
-select *from usuario;
-select *from artistas;
+create table comentarios (
+idcomentario INT auto_increment,
+fkusuario INT,
+descricao varchar(500),
+data_publicacao datetime default current_timestamp,
+constraint fkusuariocomentario foreign key (fkusuario) references usuario (id),
+primary key (idcomentario, fkusuario));
 
 
 insert into artistas (nome) values (
@@ -106,3 +30,34 @@ insert into artistas (nome) values (
 ('Os Mutantes'),
 ('Torquato Neto'),
 ('Nara Leão'));
+
+
+select *from votos;
+select *from usuario;
+select *from artistas;
+select *from comentarios;
+
+describe usuario;
+describe artistas;
+describe votos;	
+
+select u.id as "Identificador do usuário",
+u.nome as "Nome do usuário",
+u.email as "Email do usuário",
+v.idvoto as "Identificador do voto",
+a.nome as "Nome do artista votado",
+v.data_voto as "Data do voto"
+from
+	usuario as u JOIN votos as v ON u.id = v.fkusuario
+    JOIN artistas as a ON v.fkartista = a.idartista;
+    
+select c.idcomentario as "Identificador do comentario",
+u.nome as "Nome do usuario",
+c.descricao as "Comentario",
+c.data_publicacao as "Data de publicação"
+from 
+	comentarios as c JOIN usuario as u ON c.fkusuario = u.id;
+    
+    
+    
+            

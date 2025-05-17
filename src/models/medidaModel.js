@@ -23,9 +23,19 @@ function buscarMedidasEmIndicadores() {
 }
 
 
+function buscarMedidasEmcoments() {
+    const instrucaoSql = `
+SELECT 
+    c.idcomentario AS idComentario, u.nome AS nomeUsuario, c.descricao AS comentario, c.data_publicacao AS dataPublicacao
+    FROM comentarios AS c JOIN usuario AS u ON c.fkusuario = u.id ORDER BY c.data_publicacao DESC LIMIT 5;`
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
-    buscarMedidasEmIndicadores
+    buscarMedidasEmIndicadores,
+    buscarMedidasEmcoments
 }

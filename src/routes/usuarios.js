@@ -36,4 +36,8 @@ router.post("/cont_nara", function (req, res) {
     usuarioController.cont_nara(req, res);
 })
 
+router.post("/coment", function (req, res) {
+    usuarioController.coment(req, res);
+})
+
 module.exports = router;

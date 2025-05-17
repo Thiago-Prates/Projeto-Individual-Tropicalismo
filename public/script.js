@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
       });
   }, {
-      rootMargin: '0px 0px -50px 0px', // Ajuste conforme necessário
+      rootMargin: '0px 0px -50px 0px', 
   });
 
   elementos.forEach(el => observer.observe(el));
@@ -31,16 +31,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function cadastrar() {
-  // aguardar();
-
-  //Recupere o valor da nova input pelo nome do id
-  // Agora vá para o método fetch logo abaixo
+  
+  
   var nomeVar = ipt_nome.value;
   var emailVar = ipt_email.value;
   var senhaVar = ipt_senha.value;
   var confirmacaoSenhaVar = ipt_senha2.value;
 
-  // Verificando se há algum campo em branco
+
   if (
     nomeVar == "" ||
     emailVar == "" ||
@@ -63,8 +61,8 @@ function cadastrar() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
+       
+        
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
@@ -170,8 +168,8 @@ function cont_caetano() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      // crie um atributo que recebe o valor recuperado aqui
-      // Agora vá para o arquivo routes/usuario.js
+      
+      
       fkusuarioServer: fkusuarioVar,
       fkartistaServer: fkartistaVar,
     }),
@@ -211,8 +209,8 @@ function cont_gil() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      // crie um atributo que recebe o valor recuperado aqui
-      // Agora vá para o arquivo routes/usuario.js
+      
+      
       fkusuarioServer: fkusuarioVar,
       fkartistaServer: fkartistaVar,
     }),
