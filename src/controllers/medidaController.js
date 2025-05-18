@@ -81,12 +81,57 @@ function buscarMedidasEmcoments(req,res) {
 
 
 
+function salvar(req, res) {
+  const video = req.file.filename;
+
+  const {fkusuario, relato} = req.body
+
+  const usuario = { fkusuario, relato, video }
+  
+  usuarioModel.salvar(usuario)
+  .then(resultado => {
+    res.status(201).send("Usuario criado com sucesso");
+  }).catch(err => {
+    res.status(500).send(err);
+  });
+}
+
+function buscarUsuarioPelaFk(req, res) {
+  console.log(req.params.id);
+  usuarioModel.buscarUsuarioPelaFk()
+  .then(resultado => {
+    res.json({
+    relatos: resultado
+  });
+    res.json(resultado);
+  }).catch(err => {
+    res.status(500).send(err);
+  });
+}
+
+
+function buscarRelatos(req, res) {
+    medidaModel.buscarRelatos() // ou usuarioModel.buscarRelatos()
+    .then(function(resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum relato encontrado!");
+        }
+    }).catch(function(erro) {
+        console.log("Erro ao buscar relatos:", erro);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 
 
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
     buscarMedidasEmIndicadores,
-    buscarMedidasEmcoments
+    buscarMedidasEmcoments,
+    salvar,
+    buscarUsuarioPelaFk,
+    buscarRelatos
 
 }

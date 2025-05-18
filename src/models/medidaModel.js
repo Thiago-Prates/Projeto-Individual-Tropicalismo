@@ -33,9 +33,37 @@ SELECT
     return database.executar(instrucaoSql);
 }
 
+
+
+
+    function salvar(fkusuario) {
+  const instrucao = `insert into relatos (fkusuario, relato, video) values ('${relatos.fkusuario}', '${relatos.relato}', '${relato.video}')`;
+
+  return database.executar(instrucao);
+}
+
+function buscarUsuarioPelaFk() {
+  const instrucao = `select * from relatos`;
+
+  return database.executar(instrucao);
+}
+
+
+function buscarRelatos() {
+    var instrucaoSql = `
+        SELECT u.nome, r.fkusuario, r.relato, r.video, r.data_relatos
+        FROM relatos as r JOIN usuario as u
+        ORDER BY data_relatos DESC;
+    `;
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
     buscarMedidasEmIndicadores,
-    buscarMedidasEmcoments
+    buscarMedidasEmcoments,
+    salvar,
+    buscarUsuarioPelaFk,
+    buscarRelatos
 }

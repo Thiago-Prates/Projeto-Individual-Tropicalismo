@@ -65,101 +65,127 @@ function cont_caetano(req, res) {
     var fkusuario = req.body.fkusuarioServer;
     var fkartista = req.body.fkartistaServer;
 
-        usuarioModel.cont_caetano(fkusuario, fkartista)
-            .then(function (resultado) {
-                res.json(resultado);
-            }).catch(function (erro) {
-                console.log(erro);
-                console.log("\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            });
+    usuarioModel.cont_caetano(fkusuario, fkartista)
+        .then(function (resultado) {
+            res.json(resultado);
+        }).catch(function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+
+function cont_gil(req, res) {
+    var fkusuario = req.body.fkusuarioServer;
+    var fkartista = req.body.fkartistaServer;
+
+    usuarioModel.cont_gil(fkusuario, fkartista)
+        .then(function (resultado) {
+            res.json(resultado);
+        }).catch(function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+function cont_gal(req, res) {
+    var fkusuario = req.body.fkusuarioServer;
+    var fkartista = req.body.fkartistaServer;
+
+    usuarioModel.cont_gal(fkusuario, fkartista)
+        .then(function (resultado) {
+            res.json(resultado);
+        }).catch(function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+
+function cont_mut(req, res) {
+    var fkusuario = req.body.fkusuarioServer;
+    var fkartista = req.body.fkartistaServer;
+
+    usuarioModel.cont_mut(fkusuario, fkartista)
+        .then(function (resultado) {
+            res.json(resultado);
+        }).catch(function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+function cont_tor(req, res) {
+    var fkusuario = req.body.fkusuarioServer;
+    var fkartista = req.body.fkartistaServer;
+
+    usuarioModel.cont_tor(fkusuario, fkartista)
+        .then(function (resultado) {
+            res.json(resultado);
+        }).catch(function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+function cont_nara(req, res) {
+    var fkusuario = req.body.fkusuarioServer;
+    var fkartista = req.body.fkartistaServer;
+
+    usuarioModel.cont_nara(fkusuario, fkartista)
+        .then(function (resultado) {
+            res.json(resultado);
+        }).catch(function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+function coment(req, res) {
+    var fkusuario = req.body.fkusuarioServer;
+    var descricao = req.body.descricaoServer;
+
+    usuarioModel.coment(fkusuario, descricao)
+        .then(function (resultado) {
+            res.json(resultado);
+        }).catch(function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+
+
+
+
+function relatos(req, res) {
+
+    var relato = req.body.relato;
+    var fkusuario = req.body.fkusuarioServer;
+    var video = req.file ? req.file.filename : null;
+
+    if (!relato) {
+        return res.status(400).send("Preencha todos os campos obrigatórios!");
     }
 
-
-    function cont_gil(req, res) {
-        var fkusuario = req.body.fkusuarioServer;
-        var fkartista = req.body.fkartistaServer;
-    
-            usuarioModel.cont_gil(fkusuario, fkartista)
-                .then(function (resultado) {
-                    res.json(resultado);
-                }).catch(function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                });
-        }
-
-        function cont_gal(req, res) {
-            var fkusuario = req.body.fkusuarioServer;
-            var fkartista = req.body.fkartistaServer;
-        
-                usuarioModel.cont_gal(fkusuario, fkartista)
-                    .then(function (resultado) {
-                        res.json(resultado);
-                    }).catch(function (erro) {
-                        console.log(erro);
-                        console.log("\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage);
-                        res.status(500).json(erro.sqlMessage);
-                    });
-            }
+    usuarioModel.relatos(relato, video, fkusuario)
+        .then((resultado) => res.status(200).json(resultado))
+        .catch((erro) => {
+            console.log("Erro no cadastro:", erro);
+            res.status(500).json(erro.sqlMessage || erro.message);
+        });
+}
 
 
-            function cont_mut(req, res) {
-                var fkusuario = req.body.fkusuarioServer;
-                var fkartista = req.body.fkartistaServer;
-            
-                    usuarioModel.cont_mut(fkusuario, fkartista)
-                        .then(function (resultado) {
-                            res.json(resultado);
-                        }).catch(function (erro) {
-                            console.log(erro);
-                            console.log("\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage);
-                            res.status(500).json(erro.sqlMessage);
-                        });
-                }
 
-                function cont_tor(req, res) {
-                    var fkusuario = req.body.fkusuarioServer;
-                    var fkartista = req.body.fkartistaServer;
-                
-                        usuarioModel.cont_tor(fkusuario, fkartista)
-                            .then(function (resultado) {
-                                res.json(resultado);
-                            }).catch(function (erro) {
-                                console.log(erro);
-                                console.log("\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage);
-                                res.status(500).json(erro.sqlMessage);
-                            });
-                    }
 
-                    function cont_nara(req, res) {
-                        var fkusuario = req.body.fkusuarioServer;
-                        var fkartista = req.body.fkartistaServer;
-                    
-                            usuarioModel.cont_nara(fkusuario, fkartista)
-                                .then(function (resultado) {
-                                    res.json(resultado);
-                                }).catch(function (erro) {
-                                    console.log(erro);
-                                    console.log("\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage);
-                                    res.status(500).json(erro.sqlMessage);
-                                });
-                        }
-
-                        function coment(req, res) {
-                        var fkusuario = req.body.fkusuarioServer;
-                        var descricao = req.body.descricaoServer;
-                    
-                            usuarioModel.coment(fkusuario, descricao)
-                                .then(function (resultado) {
-                                    res.json(resultado);
-                                }).catch(function (erro) {
-                                    console.log(erro);
-                                    console.log("\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage);
-                                    res.status(500).json(erro.sqlMessage);
-                                });
-                        }
 
 module.exports = {
     autenticar,
@@ -170,6 +196,7 @@ module.exports = {
     cont_mut,
     cont_tor,
     cont_nara,
-    coment
+    coment,
+    relatos
 };
 

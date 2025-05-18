@@ -33,6 +33,8 @@ app.use("/usuarios", usuarioRouter);
 app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
 app.use("/aquarios", aquariosRouter);
+app.use(express.static("public"));
+
 
 // app.use("/empresas", empresasRouter);
 

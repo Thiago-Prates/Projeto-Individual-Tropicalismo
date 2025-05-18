@@ -66,22 +66,30 @@
           <h2>Envie seu relato</h2>
           <p class="indicador-valor">Seu relato poderá aparecer no mural semanal, então fique atento no mural 👀</p>
           <textarea id="relatoTexto" placeholder="Escreva aqui seu relato..."></textarea>
-          <input type="file" id="uploadVideo" accept="video/*,image/*">
+          <input type="file" id="uploadVideo" accept="video">
           <br><br>
-          <button onclick="enviarRelato()">Enviar</button>
+          <button onclick="relatos()">Enviar</button>
+          
         </div>
-      </div>
 
+      </div>
+      
     </div>
 
+    <div class="comentsmural">
     <div class="comentar" style="background-color: #000000;">
       <h3>Últimos comentários:</h3>
       <div class="comentar-pessoa"></div>
       <p class="comentar-valor"> </p>
 
-      
     </div>
+
+    <div class="muralpassado">
+      <h2>Últimos relatos:</h2>
+      <div class="video" id="relatos"></div>
   </div>
+
+</div>
 </body>
 
 
@@ -90,8 +98,11 @@
 
 
 <script>
+
   const btnRelato = document.querySelector(".btn-relato");
   const Relato = document.getElementById("Relato");
+  Relato.style.display = "none";
+
 
   btnRelato.addEventListener("click", () => {
     Relato.style.display = "flex";
@@ -110,8 +121,10 @@
       return
     }
 
+
     alert("Relato enviado com sucesso!")
     fechar()
+
   }
 
 
@@ -204,5 +217,82 @@
       });
   }
   buscarMedidasEmcoments();
+
+
+
+
+
+    function relatos() {
+    
+    const relato = relatoTexto.value;
+    var fkusuarioVar = sessionStorage.getItem("ID_USUARIO");
+    const video = document.getElementById('uploadVideo');
+
+    if (!relato || !video) {
+      alert("Preencha todos os campos!");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("relato", relato);
+    formData.append("video", video.files[0]);
+    formData.append("fkusuarioServer", fkusuarioVar);
+ 
+
+    fetch("/usuarios/relatos", {
+      method: "POST",
+      body: formData
+    })
+      .then(res => {
+        if (res.ok) {
+          alert("Relato enviado");
+          location.reload(true);
+
+        } else {
+          alert("Erro no envio");
+        }
+      })
+      .catch(err => {
+        console.error("Erro:", err);
+      });
+  }
+
+
+
+function buscarPelafk() {
+  var nome = sessionStorage.getItem("NOME_USUARIO")
+
+  fetch("/usuarios/relatos")
+    .then(res => {
+      if (!res.ok) {
+        return res.text().then(text => { throw new Error(`Erro: ${text}`); });
+      }
+      return res.json();
+    })
+    .then(resultados => {
+      const container = document.getElementById("relatos");
+      container.innerHTML = "";
+
+      if (resultados && resultados.length > 0) {
+        resultados.forEach((relato, usuario) => {
+          container.innerHTML += `
+            <div class="relato-item" style="margin-bottom: 20px; color: white;">
+              <h3>${nome} </h3>
+              <p>${relato.relato}</p>
+              <video controls>
+                <source src="uploads/${relato.video}" type="video/mp4">
+              </video>
+            </div>`;
+        });
+      } else {
+        container.innerHTML = "<p>Nenhum relato encontrado.</p>";
+      }
+    })
+}
+
+
+
+
+buscarPelafk();
 
 </script>
