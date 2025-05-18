@@ -27,7 +27,7 @@ function buscarMedidasEmcoments() {
     const instrucaoSql = `
 SELECT 
     c.idcomentario AS idComentario, u.nome AS nomeUsuario, c.descricao AS comentario, c.data_publicacao AS dataPublicacao
-    FROM comentarios AS c JOIN usuario AS u ON c.fkusuario = u.id ORDER BY c.data_publicacao DESC LIMIT 5;`
+    FROM comentarios AS c JOIN usuario AS u ON c.fkusuario = u.id ORDER BY c.data_publicacao DESC;`
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -51,9 +51,10 @@ function buscarUsuarioPelaFk() {
 
 function buscarRelatos() {
     var instrucaoSql = `
-        SELECT u.nome, r.fkusuario, r.relato, r.video, r.data_relatos
-        FROM relatos as r JOIN usuario as u
-        ORDER BY data_relatos DESC;
+    SELECT u.nome, r.relato, r.video, r.data_relatos
+    FROM relatos r
+    JOIN usuario u ON r.fkusuario = u.id
+    ORDER BY r.data_relatos DESC;
     `;
     return database.executar(instrucaoSql);
 }

@@ -30,7 +30,7 @@ primary key (idcomentario, fkusuario));
 
 create table relatos (
 idrelatos INT primary key auto_increment,
-relato varchar(400), video varchar(255), data_relatos datetime default current_timestamp,
+relato varchar(1000), video varchar(255), data_relatos datetime default current_timestamp,
 fkusuario INT, constraint fkusuariorelatos foreign key (fkusuario) references usuario (id));
 
 
@@ -75,3 +75,28 @@ from
 	comentarios as c JOIN usuario as u ON c.fkusuario = u.id;
             
 truncate table comentarios;
+
+
+
+-- COMENTARIOS
+
+
+"Essa música me leva direto para a sala da casa da minha avó, domingo à tarde, cheiro de café e rádio ligado. Que saudade!"
+
+"A voz do Brasil tem timbre, tem alma. E a MPB é a trilha sonora da nossa história."
+
+"Cada acorde dessa música toca um lugar diferente no coração. MPB é pura poesia sonora."
+
+"Fechei os olhos e viajei no tempo. A música tem esse poder. Viva a MPB!"
+
+"A MPB é patrimônio do Brasil. Não é só música, é memória, é luta, é amor."
+
+"Do samba ao violão suave, essa é a arte que nos representa. Obrigado por compartilhar cultura!"
+
+"Ouvir isso me lembra o quanto somos ricos musicalmente. O mundo precisa ouvir mais disso."
+
+"Notas que choram, palavras que dançam. A MPB transforma silêncio em emoção."
+
+"É impressionante como a simplicidade do violão e uma letra sincera podem tocar tão fundo."
+
+"Quem ouve com o coração entende: essa música é uma carta de amor em forma de som."

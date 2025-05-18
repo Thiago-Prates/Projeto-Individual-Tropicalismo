@@ -271,10 +271,11 @@ function buscarPelafk() {
     })
     .then(resultados => {
       const container = document.getElementById("relatos");
-      container.innerHTML = "";
-
+      
+      
       if (resultados && resultados.length > 0) {
-        resultados.forEach((relato, usuario) => {
+        container.innerHTML = "";
+        resultados.forEach((relato) => {
           container.innerHTML += `
             <div class="relato-item" style="margin-bottom: 20px; color: white;">
               <h3>${nome} </h3>
@@ -289,8 +290,6 @@ function buscarPelafk() {
       }
     })
 }
-
-
 
 
 buscarPelafk();
