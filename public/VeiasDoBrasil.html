@@ -278,7 +278,7 @@ function buscarPelafk() {
         resultados.forEach((relato) => {
           container.innerHTML += `
             <div class="relato-item" style="margin-bottom: 20px; color: white;">
-              <h3>${nome} </h3>
+              <h3>${relato.nome} </h3>
               <p>${relato.relato}</p>
               <video controls>
                 <source src="uploads/${relato.video}" type="video/mp4">

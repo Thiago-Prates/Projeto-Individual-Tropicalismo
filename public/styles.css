@@ -7,7 +7,7 @@ body {
     overflow-x: hidden;
     animation: animation-delay 1s linear forwards;
     
-    background-image:  linear-gradient(rgba(0, 0, 0, 0.733), rgba(0, 0, 0, 0.726)), url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgutjed6RJQ4vvJcP-H3O5F3YsHJeZiF55iHyp1RANdmiOt6Uu2XZV3af2JROpTPcF3V9xbX5bVcpZZ23h5sOVHEuBaBY2BGAiAz3_DBK_CdTOFSeoazJRdgvQCtx4a1z9jV93MsjfVhgQu/s1600/PO8BC8%257E1.JPG');
+    background-image:  linear-gradient(rgba(0, 0, 0, 0.733), rgba(0, 0, 0, 0.726)), url("logo/PO8BC8_1.JPG");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -37,7 +37,7 @@ html {
 }
 
 #inicio {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.733), rgba(0, 0, 0, 0.726)), url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgutjed6RJQ4vvJcP-H3O5F3YsHJeZiF55iHyp1RANdmiOt6Uu2XZV3af2JROpTPcF3V9xbX5bVcpZZ23h5sOVHEuBaBY2BGAiAz3_DBK_CdTOFSeoazJRdgvQCtx4a1z9jV93MsjfVhgQu/s1600/PO8BC8%257E1.JPG');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.733), rgba(0, 0, 0, 0.726)),  url("logo/PO8BC8_1.JPG");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -228,7 +228,7 @@ html {
 
 .contexto {
     padding: 0;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.651), rgba(0, 0, 0, 0.6)), url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQ23O0bTyEexxQKG2Ut4xrq34NsYMt5rT4cd2WE5u8g3IkR5dKhEUUmdtAKhHV5v4NiN2CrPQCRyzkD7OcFnuz1-F41GuAxwt9MxbfkTfjAWi2Liml_06HSRZpoHjJXSS1G5bIuWewLix_8njlJcmBJshVhCmBCQlTy0-oO2L3rCe5QAbuGmeKfsoY/w484-h451/capa.webp);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.651), rgba(0, 0, 0, 0.6)), url(logo/capa.jpg);
     background-repeat: repeat;
     background-size: auto;
     background-position: center;
@@ -399,7 +399,7 @@ html {
 
 
 .conteudo-3 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.651), rgba(0, 0, 0, 0.6)), url(https://images.unsplash.com/photo-1638311303831-a47fc5166edf?q=80&w=1933&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);    
+    background-image: linear-gradient(rgba(0, 0, 0, 0.651), rgba(0, 0, 0, 0.6)), url(logo/photo-1638311303831-a47fc5166edf.avif);    
     padding: 60px 40px;
     color: white;
     text-align: center;
@@ -491,7 +491,7 @@ html {
     text-align: center;
     font-weight: bold;
     background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.6)),
-        url(https://images.unsplash.com/photo-1507740339917-75bf36540113?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3);
+        url(logo/photo-1507740339917-75bf36540113.avif);
     background-size: cover;
     background-position: center;
     height: 90vh;
@@ -537,7 +537,7 @@ html {
 
 
 #imgpontos {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.774), rgba(0, 0, 0, 0.753)), url('https://ogimg.infoglobo.com.br/in/21947862-2cb-c24/FT1086A/Reuniao-tropicalista.-No-alto-Caetano-Torquato-Neto-e-Rita-Lee-no-meio-Tom-Ze-Glauber-Rocha-Rogerio-Duprat-e-Gil-abaixo-Helio-Oiticica-Jose-Celso-Martinez-Correa-e-GaTropicalia.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.774), rgba(0, 0, 0, 0.753)), url('logo/Reuniao-tropicalista.-No-alto-Caetano-Torquato-Neto-e-Rita-Lee-no-meio-Tom-Ze-Glauber-Rocha-Rogerio-Duprat-e-Gil-abaixo-Helio-Oiticica-Jose-Celso-Martinez-Cor.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -605,7 +605,7 @@ html {
     align-items: center; 
     text-align: center;
     font-size: xx-large;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.651), rgba(0, 0, 0, 0.6)), url(https://www.conexaolusofona.org/wp-content/uploads/2018/10/6549_big_.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.651), rgba(0, 0, 0, 0.6)), url(logo/6549_big_.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }

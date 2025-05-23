@@ -100,3 +100,6 @@ truncate table comentarios;
 "É impressionante como a simplicidade do violão e uma letra sincera podem tocar tão fundo."
 
 "Quem ouve com o coração entende: essa música é uma carta de amor em forma de som."
+
+
+Não sei quando começou exatamente toda essa história da paixão pela música, mas se tivesse que chutar, diria que é algo que nasceu antes mesmo de mim. Minha família sempre teve ligação com a música, principalmente com o canto, pois muitos deles louvavam a Deus, então sempre estive em contato com tudo isso. A música está no meu cerne e no meu intelecto, muito do que eu sou hoje devo a música, que me apresentou diferentes pontos de vistas da sociedade e da existência, e mais especificamente, a MPB me ensinou a me orgulhar de ser brasileiro e compreender um pouco o meu lugar no mundo, quem eu sou.

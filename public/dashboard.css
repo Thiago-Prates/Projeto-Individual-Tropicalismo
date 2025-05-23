@@ -1,7 +1,7 @@
 body {
     
     font-family: 'Poppins', 'sans-serif';
-    background-image: linear-gradient(rgba(0, 0, 0, 0.733), rgba(0, 0, 0, 0.726)), url(https://i.pinimg.com/736x/b4/c7/54/b4c754c50fed587684d419e05d78e24a.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.733), rgba(0, 0, 0, 0.726)), url(logo/b4c754c50fed587684d419e05d78e24a.jpg);
     background-attachment: fixed;
     overflow: hidden;
     margin: 0;
