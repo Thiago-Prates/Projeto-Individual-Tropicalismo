@@ -15,12 +15,13 @@ body {
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.1); /* fundo translúcido */
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 20px;
-    padding: 10px 30px;
+    padding: 10px 20px; 
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     z-index: 1000;
+    max-width: 90vw; 
 }
 
 .menu-itens {

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="BobIA.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="assets/image/logoMD.jpg" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=dashboard" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <title>BobIA</title>
+</head>
+
+<body>
+
+    <nav class="menu">
+        <ul class="menu-itens">
+            <a href="index.html" class="btn_menu"><span style="color: rgb(36, 233, 102);">Página inicial</span></a>
+            <a href="dashboard.html" class="btn_menu"> <span style="color: #f5c321;"> Quantidade de votos </span></a>
+            <a href="VeiasDoBrasil.html" class="btn_menu"> <span style="color: rgb(4, 163, 163);"> #Veias Do
+                    Brasil</span></a>
+            <a href="BobIA.html" class="btn_menu"> <span style="color:rgb(36, 233, 102);">BOBIA</span></a>
+        </ul>
+    </nav>
+
+    <div class="geral">
+        <div class="titulo">
+            <h1>Aprenda a tocar as músicas do movimento!</h1>
+        </div>
+
+        <div id="container">
+            <h1>BOBIA</h1>
+            <br>
+            <span>Uma Ia treinada para te ensinar música popular brasileira</span>
+            <br>
+            <br>
+            <textarea id="pergunta" type="text"
+                placeholder="Digite o nome de uma música que você quer aprender e o seu instrumento..."></textarea>
+            <br><br>
+            <button onclick="gerarResposta()">Gerar Resposta</button>
+            <h3>Resposta da IA:</h3>
+            <div id="resposta"></div>
+        </div>
+    </div>
+    <script>
+
+        async function gerarResposta() {
+            const pergunta = document.getElementById('pergunta').value;
+
+            resposta.style.display = 'block';
+            resposta.innerText = 'Carregando...';
+
+            const response = await fetch('/perguntar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ pergunta })
+            });
+
+            const data = await response.json();
+
+            resposta.style.display = 'block';
+            document.getElementById('resposta').innerText = data.resultado;
+        }
+
+    </script>
+
+</body>
+
+</html>
