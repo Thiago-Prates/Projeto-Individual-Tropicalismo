@@ -48,7 +48,7 @@
         <h1 class="indicador-valor"></h1>
       </div>
       <div class="indicador" style="background-color: #f5c321;">
-        <h3>Diferença entre o<br>primeiro e último:</h3>
+        <h3>Diferença entre o<br>mais e menos votado:</h3>
         <h1 class="indicador-valor"></h1>
       </div>
     </div>
@@ -108,7 +108,7 @@
                       backgroundColor: ['#1abc9c ', '#3498db ', '#9b59b6 ', '#e67e22 ', '#e74c3c ', '#f1c40f '],
                       data: []
                   }
-              ]
+              ]     
           };
 
           
@@ -154,7 +154,7 @@
       function plotarGraficoPizza(resposta) {
           console.log('iniciando plotagem do gráfico...');
 
-          var dados = {
+          var dados = {     
               labels: [],
               datasets: [
                   {
@@ -214,7 +214,7 @@
                       window.grafico_linha.update();
 
                       proximaAtualizacao = setTimeout(() => atualizarGrafico(dados), 2000);
-                  });
+                  }); 
               } else {
                   console.error('Nenhum dado encontrado ou erro na API');
                   proximaAtualizacao = setTimeout(() => atualizarGrafico(dados), 2000);
@@ -224,7 +224,7 @@
                   console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
               });
       }
-
+      
 
 
 
